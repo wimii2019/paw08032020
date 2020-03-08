@@ -4,6 +4,22 @@ const char NazwaKlasy[] = "Klasa Okienka";
 MSG Komunikat;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+HWND g_hPrzyciskDodaj;
+HWND g_hPrzycisk7;
+HWND g_hPrzycisk8;
+HWND g_hPrzycisk9;
+HWND g_hPrzyciskDziel;
+HWND g_hPrzycisk4;
+HWND g_hPrzycisk5;
+HWND g_hPrzycisk6;
+HWND g_hPrzyciskMnoz;
+HWND g_hPrzycisk1;
+HWND g_hPrzycisk2;
+HWND g_hPrzycisk3;
+HWND g_hPrzyciskMinus;
+HWND g_hPrzyciskC;
+HWND g_hPrzycisk0;
+HWND g_hPrzyciskRowna;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -45,38 +61,40 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
 
-    HWND g_hPrzycisk7 = CreateWindowEx(0, "BUTTON", "7", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk7 = CreateWindowEx(0, "BUTTON", "7", WS_CHILD | WS_VISIBLE,
         10, 10, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk8 = CreateWindowEx(0, "BUTTON", "8", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk8 = CreateWindowEx(0, "BUTTON", "8", WS_CHILD | WS_VISIBLE,
         40, 10, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk9 = CreateWindowEx(0, "BUTTON", "9", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk9 = CreateWindowEx(0, "BUTTON", "9", WS_CHILD | WS_VISIBLE,
         70, 10, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzyciskDziel = CreateWindowEx(0, "BUTTON", "/", WS_CHILD | WS_VISIBLE,
+    g_hPrzyciskDziel = CreateWindowEx(0, "BUTTON", "/", WS_CHILD | WS_VISIBLE,
         100, 10, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk4 = CreateWindowEx(0, "BUTTON", "4", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk4 = CreateWindowEx(0, "BUTTON", "4", WS_CHILD | WS_VISIBLE,
         10, 40, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk5 = CreateWindowEx(0, "BUTTON", "5", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk5 = CreateWindowEx(0, "BUTTON", "5", WS_CHILD | WS_VISIBLE,
         40, 40, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk6 = CreateWindowEx(0, "BUTTON", "6", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk6 = CreateWindowEx(0, "BUTTON", "6", WS_CHILD | WS_VISIBLE,
         70, 40, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzyciskMnoz = CreateWindowEx(0, "BUTTON", "*", WS_CHILD | WS_VISIBLE,
+    g_hPrzyciskMnoz = CreateWindowEx(0, "BUTTON", "*", WS_CHILD | WS_VISIBLE,
         100, 40, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk1 = CreateWindowEx(0, "BUTTON", "1", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk1 = CreateWindowEx(0, "BUTTON", "1", WS_CHILD | WS_VISIBLE,
         10, 70, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk2 = CreateWindowEx(0, "BUTTON", "2", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk2 = CreateWindowEx(0, "BUTTON", "2", WS_CHILD | WS_VISIBLE,
         40, 70, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk3 = CreateWindowEx(0, "BUTTON", "3", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk3 = CreateWindowEx(0, "BUTTON", "3", WS_CHILD | WS_VISIBLE,
         70, 70, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzyciskMinus = CreateWindowEx(0, "BUTTON", "-", WS_CHILD | WS_VISIBLE,
+    g_hPrzyciskMinus = CreateWindowEx(0, "BUTTON", "-", WS_CHILD | WS_VISIBLE,
         100, 70, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzyciskC = CreateWindowEx(0, "BUTTON", "C", WS_CHILD | WS_VISIBLE,
+    g_hPrzyciskC = CreateWindowEx(0, "BUTTON", "C", WS_CHILD | WS_VISIBLE,
         10, 100, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzycisk0 = CreateWindowEx(0, "BUTTON", "0", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk0 = CreateWindowEx(0, "BUTTON", "0", WS_CHILD | WS_VISIBLE,
         40, 100, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzyciskRowna = CreateWindowEx(0, "BUTTON", "=", WS_CHILD | WS_VISIBLE,
+    g_hPrzyciskRowna = CreateWindowEx(0, "BUTTON", "=", WS_CHILD | WS_VISIBLE,
         70, 100, 30, 30, hwnd, NULL, hInstance, NULL);
-    HWND g_hPrzyciskDodaj = CreateWindowEx(0, "BUTTON", "+", WS_CHILD | WS_VISIBLE,
+    g_hPrzyciskDodaj = CreateWindowEx(0, "BUTTON", "+", WS_CHILD | WS_VISIBLE,
         100, 100, 30, 30, hwnd, NULL, hInstance, NULL);
+
+    HWND hText = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER , 150, 10, 150, 30, hwnd, NULL, hInstance, NULL);
 
 
 
@@ -99,6 +117,56 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
+    case  WM_COMMAND:
+        if ((HWND) lParam == g_hPrzyciskDodaj){
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzyciskDziel) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzyciskMnoz) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzyciskMinus) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzyciskRowna) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk7) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk8) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk9) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk4) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk5) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk6) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk1) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk2) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk3) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzyciskC) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+        if ((HWND)lParam == g_hPrzycisk0) {
+            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+        }
+
 
     default:
         return DefWindowProc(hwnd, msg, wParam, lParam);
