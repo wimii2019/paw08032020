@@ -1,4 +1,9 @@
 #include <windows.h>
+#include <vector>
+#include <stdlib.h>
+#include <string.h>
+#include <tchar.h>
+#include <assert.h>
 
 const char NazwaKlasy[] = "Klasa Okienka";
 MSG Komunikat;
@@ -20,6 +25,7 @@ HWND g_hPrzyciskMinus;
 HWND g_hPrzyciskC;
 HWND g_hPrzycisk0;
 HWND g_hPrzyciskRowna;
+HWND hText;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -94,7 +100,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     g_hPrzyciskDodaj = CreateWindowEx(0, "BUTTON", "+", WS_CHILD | WS_VISIBLE,
         100, 100, 30, 30, hwnd, NULL, hInstance, NULL);
 
-    HWND hText = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER , 150, 10, 150, 30, hwnd, NULL, hInstance, NULL);
+    hText = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER , 150, 10, 150, 30, hwnd, NULL, hInstance, NULL);
 
 
 
@@ -104,6 +110,30 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         DispatchMessage(&Komunikat);
     }
     return Komunikat.wParam;
+}
+void AppendText(const HWND& hwnd, TCHAR* newText)
+{
+    // get edit control from dialog
+    HWND hwndOutput = GetDlgItem(hwnd, 0);
+
+    // get new length to determine buffer size
+    int outLength = GetWindowTextLength(hwndOutput) + lstrlen(newText) + 1;
+
+    // create buffer to hold current and new text
+    TCHAR* buf = (TCHAR*)GlobalAlloc(GPTR, outLength * sizeof(TCHAR));
+    if (!buf) return;
+
+    // get existing text from edit control and put into buffer
+    GetWindowText(hwndOutput, buf, outLength);
+
+    // append the newText to the buffer
+    _tcscat_s(buf, outLength, newText);
+
+    // Set the text in the edit control
+    SetWindowText(hwndOutput, buf);
+
+    // free the buffer
+    GlobalFree(buf);
 }
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -119,7 +149,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         break;
     case  WM_COMMAND:
         if ((HWND) lParam == g_hPrzyciskDodaj){
-            MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
+            AppendText(hText, new TCHAR('+'));
         }
         if ((HWND)lParam == g_hPrzyciskDziel) {
             MessageBox(NULL, "Okno odmówi³o przyjœcia na œwiat!", "Ale kicha...", MB_ICONEXCLAMATION);
