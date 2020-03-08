@@ -43,23 +43,42 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
 
-    HWND g_hPrzycisk;
 
-    g_hPrzycisk = CreateWindowEx(0, "BUTTON", "Przycisk", WS_CHILD | WS_VISIBLE,
-        10, 10, 110, 30, hwnd, NULL, hInstance, NULL);
 
-    HWND g_hCheckbox;
+    HWND g_hPrzycisk7 = CreateWindowEx(0, "BUTTON", "7", WS_CHILD | WS_VISIBLE,
+        10, 10, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk8 = CreateWindowEx(0, "BUTTON", "8", WS_CHILD | WS_VISIBLE,
+        40, 10, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk9 = CreateWindowEx(0, "BUTTON", "9", WS_CHILD | WS_VISIBLE,
+        70, 10, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzyciskDziel = CreateWindowEx(0, "BUTTON", "/", WS_CHILD | WS_VISIBLE,
+        100, 10, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk4 = CreateWindowEx(0, "BUTTON", "4", WS_CHILD | WS_VISIBLE,
+        10, 40, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk5 = CreateWindowEx(0, "BUTTON", "5", WS_CHILD | WS_VISIBLE,
+        40, 40, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk6 = CreateWindowEx(0, "BUTTON", "6", WS_CHILD | WS_VISIBLE,
+        70, 40, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzyciskMnoz = CreateWindowEx(0, "BUTTON", "*", WS_CHILD | WS_VISIBLE,
+        100, 40, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk1 = CreateWindowEx(0, "BUTTON", "1", WS_CHILD | WS_VISIBLE,
+        10, 70, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk2 = CreateWindowEx(0, "BUTTON", "2", WS_CHILD | WS_VISIBLE,
+        40, 70, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk3 = CreateWindowEx(0, "BUTTON", "3", WS_CHILD | WS_VISIBLE,
+        70, 70, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzyciskMinus = CreateWindowEx(0, "BUTTON", "-", WS_CHILD | WS_VISIBLE,
+        100, 70, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzyciskC = CreateWindowEx(0, "BUTTON", "C", WS_CHILD | WS_VISIBLE,
+        10, 100, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzycisk0 = CreateWindowEx(0, "BUTTON", "0", WS_CHILD | WS_VISIBLE,
+        40, 100, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzyciskRowna = CreateWindowEx(0, "BUTTON", "=", WS_CHILD | WS_VISIBLE,
+        70, 100, 30, 30, hwnd, NULL, hInstance, NULL);
+    HWND g_hPrzyciskDodaj = CreateWindowEx(0, "BUTTON", "+", WS_CHILD | WS_VISIBLE,
+        100, 100, 30, 30, hwnd, NULL, hInstance, NULL);
 
-    g_hCheckbox = CreateWindowEx(0, "BUTTON", "CheckBox", WS_CHILD | WS_VISIBLE | BS_CHECKBOX,
-        10, 50, 110, 30, hwnd, NULL, hInstance, NULL);
 
-    HWND g_hRadioButton;
-
-    g_hRadioButton = CreateWindowEx(0, "BUTTON", "RadioButton", WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON,
-        10, 90, 110, 30, hwnd, NULL, hInstance, NULL);
-
-    HWND hText = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER |
-        WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL, 10, 130, 150, 150, hwnd, NULL, hInstance, NULL);
 
     while (GetMessage(&Komunikat, NULL, 0, 0))
     {
